@@ -1,38 +1,27 @@
-import org.junit.After;
+/*
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.css.model.Value;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
-public class SberbankTest {
-    WebDriver driver;
-    String baseUrl;
-
-    @Before
-    public void beforeTest() {
-        baseUrl = "http://www.sberbank.ru/ru/person";
-        System.setProperty("webdriver.gecko.driver", "drv/geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        driver.manage().window().maximize();
-        driver.get(baseUrl);
-    }
+public class SberbankTest extends BaseTest{
 
     @Test
+    @Ignore
     public void testSberbank() throws InterruptedException {
+        driver.get(baseUrl);
         driver.findElement(By.xpath("//ul[contains(@class,'kitt-top-menu')]/li/*[contains(text(),'Страхование')]")).click();
         driver.findElement(By.xpath("//*[contains(text(),'Все страховые программы')]")).click();
         Thread.sleep(10000);
+        driver.findElement(By.xpath("//button[contains(@class,'kitt-cookie-warning__close')]")).click();
+        //По ощущениям окошко с оповещением о куки иногда мешает прохождению
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//div[contains(@class,'product-catalog__carousel_row')]/div[contains(@data-product,'Страхование путешественников')]")).click();
         Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
         WebElement title = driver.findElement(By.xpath("//h1[contains(text(),'Страхование путешественников')]"));
@@ -71,13 +60,6 @@ public class SberbankTest {
         Assert.assertEquals("Поле не заполнено.", driver.findElement(By.xpath("//form-control-label[contains(@title,'Повтор электронной почты')]//span[contains(@class,'message')]")).getAttribute("innerText"));
     }
 
-    private void fillField(By locator, String value) throws InterruptedException {
-        driver.findElement(locator).clear();
-        driver.findElement(locator).sendKeys(value);
-    }
 
-    @After
-    public void afterTest() {
-        driver.quit();
-    }
 }
+*/
