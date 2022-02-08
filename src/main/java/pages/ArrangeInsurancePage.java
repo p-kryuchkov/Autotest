@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ArrangeInsurancePage {
     @FindBy(xpath = "//fieldset[contains(@class, 'no-offset non-border')]")
-    WebElement typesOfInsurance;
+    public WebElement typesOfInsurance;
     @FindBy(xpath = "//button[contains(text(),'Оформить')]")
     public WebElement offerButton;
     @FindBy(xpath = "//*[contains(text(), 'Продолжить')]")

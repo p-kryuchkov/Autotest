@@ -1,4 +1,6 @@
+import Steps.BaseSteps;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -6,7 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.*;
 
-public class MyRefactoringTest extends BaseTest {
+public class MyRefactoringTest extends BaseSteps {
+    @Ignore
     @Test
     public void newSberbankTest() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
