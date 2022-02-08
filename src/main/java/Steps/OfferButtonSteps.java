@@ -1,7 +1,8 @@
 package Steps;
 
+import io.qameta.allure.Step;
 import pages.OfferButtonPage;
-import ru.yandex.qatools.allure.annotations.Step;
+
 
 public class OfferButtonSteps extends BaseSteps{
     @Step("Нажатие на кнопку \"Оформить на сайте\"")

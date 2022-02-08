@@ -1,9 +1,8 @@
 package Steps;
 
+import io.qameta.allure.Step;
 import pages.ArrangeInsurancePage;
-import pages.CatalogPage;
-import pages.OfferButtonPage;
-import ru.yandex.qatools.allure.annotations.Step;
+
 
 import java.util.HashMap;
 

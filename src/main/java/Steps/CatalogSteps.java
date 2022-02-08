@@ -1,8 +1,9 @@
 package Steps;
 
+import io.qameta.allure.Step;
 import pages.CatalogPage;
 import pages.OfferButtonPage;
-import ru.yandex.qatools.allure.annotations.Step;
+
 
 import static Steps.BaseSteps.driver;
 

@@ -1,12 +1,12 @@
 import Steps.*;
 import org.junit.Test;
-import ru.yandex.qatools.allure.annotations.Title;
+
 
 import java.util.HashMap;
 
 public class MyTestForAllureReportTest extends BaseSteps {
     @Test
-    @Title("Страхование")
+
     public void testInsurance() throws InterruptedException {
         HomeSteps homeSteps = new HomeSteps();
         CatalogSteps catalogSteps = new CatalogSteps();
