@@ -3,7 +3,6 @@ package Steps;
 import io.qameta.allure.Step;
 import pages.ArrangeInsurancePage;
 
-
 import java.util.HashMap;
 
 public class ArrangeInsuranceSteps extends BaseSteps{
@@ -28,7 +27,7 @@ public class ArrangeInsuranceSteps extends BaseSteps{
         new ArrangeInsurancePage(driver).birthDate.click();
     }
     @Step("поле {0} заполняется значением {1}")
-    public void stepFillField(String field, String value) throws InterruptedException {
+    public void stepFillField(Object field, Object value) throws InterruptedException {
         new ArrangeInsurancePage(driver).fillField(field, value);
     }
    @Step

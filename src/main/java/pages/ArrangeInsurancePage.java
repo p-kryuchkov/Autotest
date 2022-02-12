@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ArrangeInsurancePage {
     @FindBy(xpath = "//fieldset[contains(@class, 'no-offset non-border')]")
@@ -45,31 +42,25 @@ public class ArrangeInsurancePage {
         typesOfInsurance.findElement(By.xpath(".//*[contains(text(),'" + menuItem + "')]")).click();
     }
 
-    public void fillField(String fieldName, String value) throws InterruptedException {
-        switch (fieldName) {
-            case "Фамилия":
-                fillField(lastName, value);
-                break;
-            case "Имя":
-                fillField(firstName, value);
-                break;
-            case "Отчество":
-                fillField(middleName, value);
-                break;
-            case "Серия":
-                fillField(passportSeries, value);
-                break;
-            case "Номер":
-                fillField(passportNumber, value);
-                break;
-            case "Дата выдачи":
-                fillField(documentDate, value);
-                break;
-            case "Кем выдан":
-                fillField(documentIssue, value);
-            case "Дата рождения":
-                fillField(birthDate, value);
-                break;
+    public void fillField(Object fieldName, Object value) throws InterruptedException {
+        if ("Фамилия".equals(fieldName)) {
+            fillField(lastName, value);
+        } else if ("Имя".equals(fieldName)) {
+            fillField(firstName, value);
+        } else if ("Отчество".equals(fieldName)) {
+            fillField(middleName, value);
+        } else if ("Серия".equals(fieldName)) {
+            fillField(passportSeries, value);
+        } else if ("Номер".equals(fieldName)) {
+            fillField(passportNumber, value);
+        } else if ("Дата выдачи".equals(fieldName)) {
+            fillField(documentDate, value);
+        } else if ("Кем выдан".equals(fieldName)) {
+            fillField(documentIssue, value);
+
+            fillField(birthDate, value);
+        } else if ("Дата рождения".equals(fieldName)) {
+            fillField(birthDate, value);
         }
     }
 
