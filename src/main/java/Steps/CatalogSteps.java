@@ -20,13 +20,13 @@ import java.util.concurrent.TimeUnit;
 
 import static Steps.BaseSteps.driver;
 
-public class CatalogSteps extends HomeSteps{
+public class CatalogSteps {
     @Step("Выбор вида страхования")
     public void stepSelectProductCarusel (String menuItem) {
-        new CatalogPage(driver).selectProductCarusel(menuItem);
+        new CatalogPage().selectProductCarusel(menuItem);
     }
     @Step("Закрытие предупреждения о использовании куки")
     public void stepCookieWarningCloseButton () {
-        new CatalogPage(driver).cookieWarningCloseButton.click();
+        new CatalogPage().cookieWarningCloseButton.click();
     }
 }

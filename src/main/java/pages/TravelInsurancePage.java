@@ -1,5 +1,6 @@
 package pages;
 
+import Steps.BaseSteps;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,9 +17,9 @@ public class TravelInsurancePage {
 
 
     public TravelInsurancePage(WebDriver driver){
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(BaseSteps.getDriver(), this);
         @Deprecated
-        Wait<WebDriver> wait = new WebDriverWait(driver,5,1000);
+        Wait<WebDriver> wait = new WebDriverWait(BaseSteps.getDriver(),5,1000);
         wait.until(ExpectedConditions.visibilityOf(title));
     }
 

@@ -17,9 +17,9 @@ import util.TestProperties;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class OfferButtonSteps extends BaseSteps{
+public class OfferButtonSteps {
     @Step("Нажатие на кнопку \"Оформить на сайте\"")
     public void stepOfferButton () {
-        new OfferButtonPage(driver).offerButton.click();
+        new OfferButtonPage().offerButton.click();
     }
 }
