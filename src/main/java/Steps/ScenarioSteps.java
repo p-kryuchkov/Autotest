@@ -124,6 +124,10 @@ public class ScenarioSteps {
         fields.<String, String>asMap(String.class, String.class)
                 .forEach((field, value) -> arrangeInsuranceSteps.checkFillField(field, value));
     }
+    @Then("^в поле \"(.+)\" сообщение об ошибке \"(.+)\"$")
+    public void checkErrorMessage(String field, String errorMessage) {
+        arrangeInsuranceSteps.checkErrorMessage(field, errorMessage);
+    }
 }
 
 

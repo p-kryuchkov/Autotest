@@ -37,6 +37,10 @@ public class ArrangeInsuranceSteps {
     public void stepFillField(String field, String value) throws InterruptedException {
         new ArrangeInsurancePage(BaseSteps.getDriver()).fillField(field, value);
     }
+    @Step
+    public void checkErrorMessage(String field,  String value){
+        new ArrangeInsurancePage(BaseSteps.getDriver()).checkErrorMessage(field, value);
+    }
     @Step()
     public void checkFillField(String field, String value) {
         String actual = new ArrangeInsurancePage(BaseSteps.getDriver()).checkFillField(field);

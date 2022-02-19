@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertEquals;
+
 public class ArrangeInsurancePage {
     @FindBy(xpath = "//fieldset[contains(@class, 'no-offset non-border')]")
     public WebElement typesOfInsurance;
@@ -33,6 +35,8 @@ public class ArrangeInsurancePage {
     WebElement documentIssue;
     @FindBy(id = "documentDate")
     WebElement documentDate;
+    @FindBy(xpath = "//*[@class='page container']")
+    WebElement pageContainer;
     @FindBy(xpath = "//label[contains(text(), 'Женский')]")
     public WebElement female;
     @FindBy(xpath = "//label[contains(text(), 'Мужской')]")
@@ -52,23 +56,18 @@ public class ArrangeInsurancePage {
         typesOfInsurance.findElement(By.xpath(".//*[contains(text(),'" + menuItem + "')]")).click();
     }
 
-    public void fillField(Object fieldName, Object value) throws InterruptedException {
-        if ("Фамилия".equals(fieldName)) {
-            fillField(lastName, value);
-        } else if ("Имя".equals(fieldName)) {
-            fillField(firstName, value);
-        } else if ("Отчество".equals(fieldName)) {
-            fillField(middleName, value);
-        } else if ("Серия".equals(fieldName)) {
-            fillField(passportSeries, value);
-        } else if ("Номер".equals(fieldName)) {
-            fillField(passportNumber, value);
-        } else if ("Дата выдачи".equals(fieldName)) {
-            fillField(documentDate, value);
-        } else if ("Кем выдан".equals(fieldName)) {
-            fillField(documentIssue, value);
-        } else if ("Дата рождения".equals(fieldName)) {
-            fillField(birthDate, value);
+    public void fillField(String fieldName, String value){
+        try {
+            if ("Фамилия".equals(fieldName)) { fillField(lastName, value); }
+            if ("Имя".equals(fieldName)) { fillField(firstName, value); }
+            if ("Дата рождения".equals(fieldName)) { fillField(birthDate, value); pageContainer.click();}
+            if ("Отчество".equals(fieldName)) { fillField(middleName, value); }
+            if ("Серия".equals(fieldName)) { fillField(passportSeries, value); }
+            if ("Номер".equals(fieldName)) { fillField(passportNumber, value); }
+            if ("Дата выдачи".equals(fieldName)) { fillField(documentDate, value); pageContainer.click();}
+            if ("Кем выдан".equals(fieldName)) { fillField(documentIssue, value); }
+        } catch (Exception e) {
+            new AssertionError("Поле '" + fieldName + "' не объявлено на странице");
         }
     }
     public String checkFillField(String fieldName) {
@@ -97,6 +96,18 @@ public class ArrangeInsurancePage {
     public static void fillField(WebElement element, String value) throws InterruptedException {
         element.clear();
         element.sendKeys(value);
+    }
+    public void checkErrorMessage(String field, String errorMessage){
+        if (field.equals("Мобильный телефон") || field.equals("Электронная почта")||field.equals( "Повтор электронной почты")) {
+            String xpath = "//*[contains(@title, '" + field + "')]//*[contains(text(), 'Поле не заполнено')]";
+            String actualValue = BaseSteps.getDriver().findElement(By.xpath(xpath)).getText();
+            assertEquals(errorMessage, actualValue);
+        } else {
+            String xpath = "//*[@class='alert-form alert-form-error']";
+            String actualValue = BaseSteps.getDriver().findElement(By.xpath(xpath)).getText();
+            assertEquals(errorMessage, actualValue);
+        }
+
     }
 
 }
